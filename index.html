@@ -71,10 +71,31 @@
 
         <label for="roleSelect">Target role</label>
         <select id="roleSelect" name="role" required>
-          <option value="java-backend">Java Backend Developer</option>
-          <option value="frontend">Frontend Developer</option>
-          <option value="data-analyst">Data Analyst</option>
-          <option value="qa-automation">QA Automation Engineer</option>
+          <optgroup label="Backend / Full Stack">
+            <option value="java-backend">Java Backend Developer</option>
+            <option value="fullstack">Full Stack Developer</option>
+          </optgroup>
+          <optgroup label="Frontend">
+            <option value="frontend">Frontend Developer</option>
+          </optgroup>
+          <optgroup label="Data / AI">
+            <option value="data-analyst">Data Analyst</option>
+            <option value="ml-engineer">Machine Learning Engineer</option>
+          </optgroup>
+          <optgroup label="Infrastructure / Security">
+            <option value="devops">DevOps / Cloud Engineer</option>
+            <option value="cybersecurity">Cybersecurity Analyst</option>
+          </optgroup>
+          <optgroup label="Quality">
+            <option value="qa-automation">QA Automation Engineer</option>
+          </optgroup>
+        </select>
+
+        <label for="durationSelect">Learning plan duration</label>
+        <select id="durationSelect" name="duration">
+          <option value="4">4 weeks — Foundation sprint</option>
+          <option value="8">8 weeks — Solid build + interview prep</option>
+          <option value="12">12 weeks — Master-level + MNC mock interviews</option>
         </select>
 
         <div class="field-row">
@@ -140,6 +161,11 @@
               <div class="metric-value" id="hoursValue">8h</div>
               <small>Your available study time</small>
             </div>
+            <div class="metric-card">
+              <span>Plan length</span>
+              <div class="metric-value" id="durationValue">4wk</div>
+              <small>Selected learning duration</small>
+            </div>
           </div>
 
           <!-- radar chart + gap list side by side on wide screens -->
@@ -165,7 +191,7 @@
           </div>
 
           <div class="result-block" id="roadmap">
-            <div class="block-title"><h4>4-week learning plan</h4><span class="label-chip cyan-label">SUGGESTED PLAN</span></div>
+            <div class="block-title"><h4>Learning plan</h4><span class="label-chip cyan-label" id="planDurationLabel">4-WEEK PLAN</span></div>
             <div id="roadmapList" class="roadmap-list"></div>
             <div class="roadmap-footer">
               <span id="taskProgressText">0 of 0 tasks done</span>
