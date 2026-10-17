@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="RoleReady AI — skill gap analyser and career roadmap tool for students, aligned with UN SDG 8.">
+  <title>RoleReady AI | Career Roadmap Advisor</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="RoleReady AI home"><span class="brand-mark">R</span><span>RoleReady <b>AI</b></span></a>
+    <nav aria-label="Main navigation">
+      <a href="#analyzer">Skill analyzer</a>
+      <a href="#roadmap">My roadmap</a>
+      <a href="#about">About</a>
+    </nav>
+    <span class="sdg-pill"><span class="sdg-dot"></span> SDG 8 · Decent Work</span>
+  </header>
+
+  <main id="top">
+
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">A student career-readiness tool</p>
+        <h1>Know your gaps. Build a plan you can <em>actually follow.</em></h1>
+        <p class="hero-lede">Pick a target role, rate your skills honestly, and get a skill radar, gap list, 4-week roadmap and curated resource links — all in the browser.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#analyzer">Get my roadmap <span aria-hidden="true">↗</span></a>
+          <span class="micro-note">Student prototype · No job guarantees</span>
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="Career readiness progress illustration">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="float-chip chip-one"><span class="chip-icon">✓</span><span><b>Skill radar</b><small>Visual gap map</small></span></div>
+        <div class="float-chip chip-two"><span class="chip-icon cyan">↗</span><span><b>Free resources</b><small>One link per gap</small></span></div>
+        <div class="score-card">
+          <div class="score-head"><span>YOUR PROGRESS</span><span class="live-dot"></span></div>
+          <div class="sample-score">68<span>%</span></div>
+          <div class="progress-track"><span style="width:68%"></span></div>
+          <p>Small steps. Visible progress.</p>
+          <div class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="star star-a">✦</div>
+        <div class="star star-b">✧</div>
+      </div>
+    </section>
+
+    <section class="value-strip" aria-label="What this app does">
+      <div><span class="strip-num">01</span><b>Skill radar chart</b><small>See your profile vs the role template</small></div>
+      <div><span class="strip-num">02</span><b>Prioritised gaps + free links</b><small>Know what to learn and where to start</small></div>
+      <div><span class="strip-num">03</span><b>4-week plan + portfolio project</b><small>A concrete roadmap, not just advice</small></div>
+    </section>
+
+    <section class="section-heading" id="analyzer">
+      <div>
+        <p class="eyebrow">Step 1 — choose your goal</p>
+        <h2>Your skill snapshot</h2>
+        <p class="section-subtitle">Select a role and rate your skills honestly. The analysis uses sample role templates — not official employer requirements.</p>
+      </div>
+      <div class="step-label"><span>1</span> PROFILE <i>—</i> <span>2</span> ANALYZE <i>—</i> <span>3</span> PLAN</div>
+    </section>
+
+    <section class="workspace">
+      <form class="panel profile-panel" id="profileForm">
+        <div class="panel-heading">
+          <div><span class="panel-kicker">YOUR PROFILE</span><h3>Tell me about your goal</h3></div>
+          <span class="panel-icon">◎</span>
+        </div>
+
+        <label for="roleSelect">Target role</label>
+        <select id="roleSelect" name="role" required>
+          <option value="java-backend">Java Backend Developer</option>
+          <option value="frontend">Frontend Developer</option>
+          <option value="data-analyst">Data Analyst</option>
+          <option value="qa-automation">QA Automation Engineer</option>
+        </select>
+
+        <div class="field-row">
+          <label for="hoursInput">Study time available</label>
+          <div class="hours-control">
+            <input type="number" id="hoursInput" name="hours" min="2" max="40" value="8" required>
+            <span>hours / week</span>
+          </div>
+        </div>
+
+        <div class="skills-heading">
+          <div>
+            <h4>Rate your current skills</h4>
+            <p>Be honest — a realistic rating gives a better plan.</p>
+          </div>
+          <span class="skill-count" id="skillCount">8 skills</span>
+        </div>
+
+        <div id="skillInputs" class="skill-inputs" aria-live="polite"></div>
+
+        <button class="button primary full-width" type="submit">Analyze my skill gaps <span aria-hidden="true">→</span></button>
+        <p class="privacy-note"><span>◈</span> Everything stays in this browser tab. Don't enter sensitive info.</p>
+      </form>
+
+      <section class="panel results-panel" aria-live="polite" aria-label="Analysis results">
+        <div class="empty-state" id="emptyState">
+          <div class="empty-illustration"><span>R</span><i>✦</i></div>
+          <p class="panel-kicker">YOUR REPORT WILL APPEAR HERE</p>
+          <h3>Start with an honest self-rating.</h3>
+          <p>Rate your skills on the left and click <b>Analyze my skill gaps</b>. You'll get a radar chart, prioritised gaps with free resource links, a 4-week plan, and a portfolio project idea.</p>
+          <div class="empty-tags"><span>Radar chart</span><span>Gap links</span><span>Roadmap</span></div>
+        </div>
+
+        <div id="resultsContent" class="results-content hidden">
+          <div class="results-top">
+            <div>
+              <span class="panel-kicker">YOUR SNAPSHOT</span>
+              <h3 id="resultRole">Java Backend Developer</h3>
+              <p id="resultSummary">Results are ready.</p>
+            </div>
+            <div class="results-actions">
+              <button id="copyPlanBtn" class="icon-button" type="button" title="Copy plan to clipboard" aria-label="Copy plan">Copy plan</button>
+              <button id="printPlanBtn" class="icon-button" type="button" title="Print / save as PDF" aria-label="Print or save as PDF">⎙ Save</button>
+              <button id="resetButton" class="icon-button" type="button" title="Reset" aria-label="Reset profile">↺</button>
+            </div>
+          </div>
+
+          <div class="metrics-grid">
+            <div class="metric-card featured-metric">
+              <span>Skill coverage</span>
+              <div class="metric-value" id="coverageValue">0%</div>
+              <div class="progress-track"><span id="coverageBar" style="width:0%"></span></div>
+              <small>Against sample role template</small>
+            </div>
+            <div class="metric-card">
+              <span>Gaps to fix</span>
+              <div class="metric-value" id="gapValue">0</div>
+              <small>Skills below required level</small>
+            </div>
+            <div class="metric-card">
+              <span>Weekly time</span>
+              <div class="metric-value" id="hoursValue">8h</div>
+              <small>Your available study time</small>
+            </div>
+          </div>
+
+          <!-- radar chart + gap list side by side on wide screens -->
+          <div class="radar-gap-row">
+            <div class="result-block radar-block">
+              <div class="block-title"><h4>Skill radar</h4><span class="label-chip">YOUR PROFILE vs ROLE</span></div>
+              <div id="radarChart" class="radar-wrap"></div>
+              <div class="radar-legend">
+                <span class="legend-required">Required</span>
+                <span class="legend-actual">Your level</span>
+              </div>
+            </div>
+
+            <div class="result-block gap-block">
+              <div class="block-title"><h4>Skill gap report</h4><span class="label-chip">PRIORITY ORDER</span></div>
+              <div id="gapList" class="gap-list"></div>
+            </div>
+          </div>
+
+          <div class="result-block" id="roadmap">
+            <div class="block-title"><h4>4-week learning plan</h4><span class="label-chip cyan-label">SUGGESTED PLAN</span></div>
+            <div id="roadmapList" class="roadmap-list"></div>
+            <div class="roadmap-footer">
+              <span id="taskProgressText">0 of 0 tasks done</span>
+              <div class="progress-track"><span id="taskProgressBar" style="width:0%"></span></div>
+            </div>
+          </div>
+
+          <div class="result-block">
+            <div class="block-title"><h4>Portfolio project</h4><span class="label-chip">BUILD IT</span></div>
+            <div class="project-card">
+              <div class="project-icon">⌘</div>
+              <div>
+                <h5 id="projectTitle">Task Management REST API</h5>
+                <p id="projectDescription">A project idea based on your target role.</p>
+                <div id="projectTags" class="project-tags"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-block ai-block">
+            <div class="block-title"><h4>Quick guidance</h4><span class="label-chip purple-label">OPTIONAL AI</span></div>
+            <p class="ai-intro">Without a deployed backend, this shows local rule-based guidance and labels it clearly. With a Java server + API key configured, it calls the AI service instead.</p>
+            <button class="button secondary" id="guidanceButton" type="button">Generate guidance <span aria-hidden="true">✦</span></button>
+            <div id="guidanceOutput" class="guidance-output hidden" role="status" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="how-section" id="about">
+      <div>
+        <p class="eyebrow">Why I built this</p>
+        <h2>Skill gaps shouldn't be a mystery.</h2>
+      </div>
+      <div class="how-copy">
+        <p>RoleReady AI is a student project built as part of an IBM SkillsBuild internship training program. The idea is grounded in <b>UN Sustainable Development Goal 8 — Decent Work and Economic Growth</b>, which identifies skill-job mismatch as a barrier to youth employment worldwide.</p>
+        <p>The app shows you the gap between your current skills and a sample role template, gives you a prioritised study plan, and links you to free learning resources. It doesn't predict hiring chances — that's not something a checklist can do. The real work still happens on your end.</p>
+        <a class="text-link" href="https://sdgs.un.org/goals/goal8" target="_blank" rel="noreferrer">Read about SDG 8 <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <a class="brand footer-brand" href="#top"><span class="brand-mark">R</span><span>RoleReady <b>AI</b></span></a>
+    <span>Student prototype · SDG 8 · v1.1</span>
+    <span>No guarantees — just a starting point</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
