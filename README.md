@@ -5,7 +5,7 @@
 [![SDG 8](https://img.shields.io/badge/UN%20SDG-8%20Decent%20Work-orange?style=flat-square)](https://sdgs.un.org/goals/goal8)
 [![Vanilla JS](https://img.shields.io/badge/Built%20with-Vanilla%20JS-f7df1e?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-> A browser-based skill-gap analyser and career roadmap tool for students preparing for entry-level tech roles. No login, no database, no paid API required.
+> A browser-based skill-gap analyser and career roadmap tool for students preparing for entry-level tech roles. Choose from **8 in-demand roles**, select a **4, 8, or 12-week learning plan**, and get a skill radar, expert-voice gap analysis, prioritised roadmap, and MNC interview prep — all in the browser. No login, no database, no paid API required.
 
 ---
 
