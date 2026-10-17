@@ -1,7 +1,29 @@
 # Changelog
 
-All notable changes to RoleReady AI are documented here.  
+All notable changes to RoleReady AI are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
+
+---
+
+## [1.2.0] — 2025-07-20
+
+### Added
+- 4 new roles: DevOps / Cloud Engineer, Full Stack Developer, Machine Learning Engineer, Cybersecurity Analyst
+- Role options grouped by category (Backend / Frontend / Data / Infrastructure / Quality)
+- Learning plan duration selector: 4 weeks (foundation), 8 weeks (deep build + interview prep), 12 weeks (master-level + MNC mock interviews)
+- 4th metric card showing selected plan length
+- 8-week plan adds: mock interview practice, open source reading, system design basics, GitHub profile polish
+- 12-week plan adds: MNC company research, advanced topics, timed coding practice, full mock interview loop
+- Expert-voice "why" text for every skill — written as advice from a 20+ year senior engineer
+- Plan duration saved in score history (localStorage)
+
+### Changed
+- All skill "why" fields rewritten to be direct, specific, and honest — no generic advice
+- Project descriptions upgraded with concrete requirements (test counts, deployment targets, specific tools)
+- Roadmap tasks upgraded from generic to specific, actionable, professional-grade instructions
+- Hero section updated to mention 8 roles and 3 plan durations
+- Value strip updated to reflect expert guidance and flexible plan lengths
+- `localStorage` key per role now also includes duration to avoid plan collisions
 
 ---
 
