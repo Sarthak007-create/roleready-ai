@@ -17,15 +17,7 @@
 
 ---
 
-## 📸 Screenshots
 
-| Skill Radar + Gap Report | 4-Week Roadmap |
-|:---:|:---:|
-| *(Add screenshot here)* | *(Add screenshot here)* |
-
-> To add screenshots: open the app, take a screenshot, save as `docs/screenshot-1.png` and `docs/screenshot-2.png`, then update the image paths above.
-
----
 
 ## ✨ What it does
 
