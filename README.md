@@ -1,6 +1,6 @@
 # RoleReady AI 🎯
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-000000?style=flat-square&logo=vercel&logoColor=white)](https://roleready-ai.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-000000?style=flat-square&logo=vercel&logoColor=white)](https://roleready-ai-lilac.vercel.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
 [![SDG 8](https://img.shields.io/badge/UN%20SDG-8%20Decent%20Work-orange?style=flat-square)](https://sdgs.un.org/goals/goal8)
 [![Vanilla JS](https://img.shields.io/badge/Built%20with-Vanilla%20JS-f7df1e?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
@@ -11,7 +11,7 @@
 
 ## 🔗 Live Demo
 
-**[https://roleready-ai.vercel.app/](https://roleready-ai.vercel.app/)**
+**[https://roleready-ai-lilac.vercel.app/](https://roleready-ai-lilac.vercel.app/)**
 
 > Deployed on Vercel — goes live automatically on every push to main.
 
