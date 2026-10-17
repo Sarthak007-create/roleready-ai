@@ -279,12 +279,69 @@ function el(tag, cls, text) {
   return node;
 }
 
+// ── Score history (localStorage, last 5) ────────────────────────
+function saveHistory(result) {
+  const key = 'roleready-history';
+  let history = [];
+  try { history = JSON.parse(localStorage.getItem(key) || '[]'); } catch (_) { history = []; }
+  history.unshift({
+    role:     result.role.title,
+    coverage: result.coverage,
+    gaps:     result.gaps.length,
+    date:     new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })
+  });
+  history = history.slice(0, 5); // keep last 5
+  try { localStorage.setItem(key, JSON.stringify(history)); } catch (_) {}
+  return history;
+}
+
+function renderHistory(history) {
+  const block = document.getElementById('historyBlock');
+  const list  = document.getElementById('historyList');
+  if (!history.length) { block.style.display = 'none'; return; }
+  block.style.display = '';
+  list.innerHTML = '';
+  history.forEach((h, i) => {
+    const row = el('div', 'history-row');
+    const badge = i === 0 ? '<span class="history-now">latest</span>' : '';
+    row.innerHTML = `
+      <span class="history-role">${h.role}</span>
+      <span class="history-meta">${h.date} · ${h.gaps} gap${h.gaps !== 1 ? 's' : ''}</span>
+      <span class="history-cov">${h.coverage}% ${badge}</span>`;
+    list.appendChild(row);
+  });
+}
+
+// ── LinkedIn share ───────────────────────────────────────────────
+function shareOnLinkedIn(result) {
+  const text = encodeURIComponent(
+    `Just analysed my skill gaps for ${result.role.title} using RoleReady AI — I scored ${result.coverage}% coverage and have a clear 4-week plan to close the gaps. Built as part of IBM SkillsBuild Internship 2025. #SDG8 #IBMSkillsBuild #StudentDev`
+  );
+  const url = encodeURIComponent('https://roleready-ai-lilac.vercel.app');
+  window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&summary=${text}`, '_blank', 'noopener');
+}
+
 // ── Main render ─────────────────────────────────────────────────
 function renderAnalysis(result) {
   lastResult = result;
 
   document.getElementById('emptyState').classList.add('hidden');
   document.getElementById('resultsContent').classList.remove('hidden');
+
+  // update the hero score card live
+  const heroScore = document.getElementById('heroScore');
+  const heroBar   = document.getElementById('heroBar');
+  const heroLabel = document.getElementById('heroScoreLabel');
+  if (heroScore) {
+    heroScore.innerHTML = `${result.coverage}<span>%</span>`;
+    heroBar.style.width  = `${result.coverage}%`;
+    heroLabel.textContent = result.gaps.length
+      ? `${result.gaps.length} gap${result.gaps.length > 1 ? 's' : ''} to close — keep going!`
+      : 'All requirements met!';
+  }
+
+  // save and render history
+  renderHistory(saveHistory(result));
 
   document.getElementById('resultRole').textContent = result.role.title;
   document.getElementById('resultSummary').textContent = result.gaps.length
@@ -524,5 +581,6 @@ document.getElementById('resetButton').addEventListener('click', () => {
 document.getElementById('guidanceButton').addEventListener('click', requestGuidance);
 document.getElementById('copyPlanBtn').addEventListener('click', copyPlan);
 document.getElementById('printPlanBtn').addEventListener('click', printPlan);
+document.getElementById('shareBtn').addEventListener('click', () => { if (lastResult) shareOnLinkedIn(lastResult); });
 
 renderSkillInputs();

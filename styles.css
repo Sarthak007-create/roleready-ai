@@ -50,6 +50,28 @@
 .spinner{display:inline-block;width:12px;height:12px;border:2px solid rgba(255,255,255,.2);border-top-color:var(--ink);border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;margin-right:6px}
 @keyframes spin{to{transform:rotate(360deg)}}
 
+/* ── Score history ───────────────────────────────────────────── */
+.history-list{display:flex;flex-direction:column;gap:8px}
+.history-row{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--panel2);border-radius:10px;border:1px solid var(--line);font-size:12px}
+.history-role{flex:1;font-weight:600;color:var(--ink)}
+.history-meta{color:var(--muted2);white-space:nowrap}
+.history-cov{font-weight:700;color:var(--cyan);white-space:nowrap}
+.history-now{background:rgba(118,227,222,.15);color:var(--cyan);border:1px solid rgba(118,227,222,.3);border-radius:20px;padding:1px 7px;font-size:9px;font-weight:700;letter-spacing:.8px;margin-left:5px}
+
+/* ── SDG stats ───────────────────────────────────────────────── */
+.sdg-stats{display:flex;gap:16px;flex-wrap:wrap;margin-top:18px}
+.sdg-stat{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px 16px;min-width:130px}
+.sdg-stat-num{display:block;font-family:Manrope,sans-serif;font-size:22px;font-weight:800;color:var(--cyan)}
+.sdg-stat small{font-size:10px;color:var(--muted);line-height:1.4;display:block;margin-top:3px}
+
+/* ── How section links row ───────────────────────────────────── */
+.how-links{display:flex;gap:20px;flex-wrap:wrap;margin-top:12px}
+
+/* ── Footer links ────────────────────────────────────────────── */
+.footer-links{display:flex;gap:14px}
+.footer-links a{font-size:11px;color:var(--muted);transition:color .2s}
+.footer-links a:hover{color:var(--cyan)}
+
 /* ── Print styles ────────────────────────────────────────────── */
 @media print{
   .topbar,.hero,.value-strip,.section-heading,.profile-panel,.empty-state,
